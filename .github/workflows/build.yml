@@ -35,8 +35,11 @@ jobs:
       run: |
         dotnet build -c Release Avalonia.NC.Controls.slnx
 
+    - name: Pack
+        run: dotnet pack --configuration Release --no-build -o ./packages
+
     - name: Upload Controls artifact
       uses: actions/upload-artifact@v4
       with:
-        name: dotnet Avalonia.NC.Controls
-        path: src\Avalonia.NC.Controls\bin\Release\netstandard2.0
+        name: Avalonia.NC.Controls nuget package
+        path: packages
